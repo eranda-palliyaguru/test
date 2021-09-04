@@ -113,7 +113,7 @@ include_once("sidebar.php");
 
 
 
-	 <div class="col-md-4">
+	        <div class="col-md-4">
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -127,9 +127,9 @@ include_once("sidebar.php");
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
-			  <?php
-			  $result = $db->prepare("SELECT * FROM products WHERE product_id>=9  ");
-				$result->bindParam(':userid', $date);
+			   <?php
+			   $result = $db->prepare("SELECT * FROM products WHERE product_id>=9  ");
+				 $result->bindParam(':userid', $date);
                 $result->execute();
                 for($i=0; $row = $result->fetch(); $i++){
 					?>
@@ -139,7 +139,7 @@ include_once("sidebar.php");
             </div>
           </div>
           <!-- /.widget-user -->
-        </div>
+         </div>
 
 
 
@@ -147,7 +147,7 @@ include_once("sidebar.php");
 
 
 
-	 <div class="col-md-4">
+	        <div class="col-md-4">
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -161,7 +161,7 @@ include_once("sidebar.php");
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked"><?php
-			  $result = $db->prepare("SELECT * FROM products WHERE product_name>=1  ");
+			    $result = $db->prepare("SELECT * FROM products WHERE product_name>=1  ");
 
 					$result->bindParam(':userid', $date);
                 $result->execute();
@@ -171,30 +171,30 @@ include_once("sidebar.php");
 					?>
                 <li><a href="#"><?php echo $row['gen_name']; ?> <span class="pull-right badge bg-red"><?php echo $row['qty']; ?></span></a></li>
                 <?php } ?>
-				<?php
-			  $result = $db->prepare("SELECT * FROM products WHERE product_name='' and product_id<9 ");
-				$result->bindParam(':userid', $date);
+				  <?php
+			    $result = $db->prepare("SELECT * FROM products WHERE product_name='' and product_id<9 ");
+				  $result->bindParam(':userid', $date);
                 $result->execute();
                 for($i=0; $row = $result->fetch(); $i++){
-				$pro_id=$row['product_id'];
-				$cha=0;
-	$result1 = $db->prepare("SELECT * FROM products WHERE product_name='$pro_id'  ");
-				$result1->bindParam(':userid', $date);
+				  $pro_id=$row['product_id'];
+				  $cha=0;
+	        $result1 = $db->prepare("SELECT * FROM products WHERE product_name='$pro_id'  ");
+				   $result1->bindParam(':userid', $date);
                 $result1->execute();
                 for($i=0; $row1 = $result1->fetch(); $i++){
-				$cha=$row1['qty'];
-				}
+				 $cha=$row1['qty'];
+				 }
 
 					?>
                 <li><a href="#"><?php echo $row['gen_name']; ?><span class="pull-right badge bg-"><?php echo $row['qty']-$cha; ?></span>
-			<span class="pull-right badge bg-green"><?php echo $row['qty']; ?></span>
-				</a></li>
+			   <span class="pull-right badge bg-green"><?php echo $row['qty']; ?></span>
+				 </a></li>
                 <?php } ?>
               </ul>
             </div>
           </div>
           <!-- /.widget-user -->
-        </div>
+         </div>
 
 
 
@@ -202,7 +202,7 @@ include_once("sidebar.php");
 
 
 
-		<div class="col-md-4">
+		      <div class="col-md-4">
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -217,8 +217,8 @@ include_once("sidebar.php");
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
 
-				<?php
-			  $result = $db->prepare("SELECT * FROM products WHERE  product_id<9 ");
+				 <?php
+			   $result = $db->prepare("SELECT * FROM products WHERE  product_id<9 ");
 
 					$result->bindParam(':userid', $date);
                 $result->execute();
@@ -227,8 +227,8 @@ include_once("sidebar.php");
 
 					?>
                 <li><a href="#"><?php echo $row['gen_name']; ?>
-	<span class="pull-right badge bg-red"><?php echo $row['qty']-$row['qty2']; ?></span>
-	<span class="pull-right badge bg-aqua"><?php echo $row['qty2']; ?></span>
+	              <span class="pull-right badge bg-red"><?php echo $row['qty']-$row['qty2']; ?></span>
+	              <span class="pull-right badge bg-aqua"><?php echo $row['qty2']; ?></span>
 					</a></li>
 
                 <?php } ?>
@@ -236,9 +236,9 @@ include_once("sidebar.php");
             </div>
           </div>
           <!-- /.widget-user -->
-        </div>
+          </div></div>
 
-
+        <div class="row">
 
 	 <!-- /----------------------------------------------------.Lorry-view --------------------------------------------------------------- -->
 
