@@ -166,7 +166,7 @@ include_once("sidebar.php");
               <span class="info-box-number">163,921</span>
 
               <div class="progress">
-                <div class="progress-bar" style="width: 40%"></div>
+                <div class="progress-bar" style="width: 20%"></div>
               </div>
                   <span class="progress-description">
                     40% Increase in 30 Days
@@ -179,43 +179,38 @@ include_once("sidebar.php");
           </div>  <!-- /.box -->
 
 
-
      <div class="row">
         <div class="col-md-6">
                     <!-- LINE CHART -->
-                    <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Sales Value Chart</h3>
+                    <div class="box box-solid bg-teal-gradient">
+            <div class="box-header">
+              <i class="fa fa-th"></i>
+
+              <h3 class="box-title">Sales Graph</h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
               </div>
             </div>
-            <div class="box-body chart-responsive">
+            <div class="box-body border-radius-none">
               <div class="chart" id="line-chart" style="height: 300px;"></div>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
- 
-          <!-- /.box -->
-
         </div>
         <!-- /.col (LEFT) -->
         <div class="col-md-6">
-
-
           <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
+          <div class="box box-solid ">
+            <div class="box-header ">
               <h3 class="box-title">Bar Chart</h3>
-
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                <button type="button" class="btn  btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
               </div>
             </div>
             <div class="box-body chart-responsive">
@@ -232,6 +227,26 @@ include_once("sidebar.php");
                
       </div>
      
+      <div class="col-md-12">
+          <!-- BAR CHART -->
+          <div class="box box-solid ">
+            <div class="box-header ">
+              <h3 class="box-title">Bar Chart</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn  btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart2" style="height: 200px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
 
 	 <div class="row">
 
@@ -508,9 +523,11 @@ include_once("sidebar.php");
       xkey: 'y',
       ykeys: ['item1'],
       labels: ['Value'],
-      lineColors: ['#3c8dbc'],
+      lineColors: ['#ffffff'],
+      gridTextColor: ['#ffffff'],
       hideHover: 'auto'
     });
+
 
 
     //BAR CHART
@@ -532,6 +549,34 @@ include_once("sidebar.php");
       labels: ['IN', 'OUT'],
       hideHover: 'auto'
     });
+
+
+    //BAR CHART
+    var bar = new Morris.Bar({
+      element: 'bar-chart2',
+      resize: true,
+      data: [
+        {y: '2015', a: 10000000, b: 9000000},
+        {y: '2016', a: 7500000, b: 6500000},
+        {y: '2017', a: 5000000, b: 4000000},
+        {y: '2018', a: 7500000, b: 6500000},
+        {y: '2019', a: 5000000, b: 4000000},
+        {y: '2020', a: 7500000, b: 6500000},
+        {y: '2021', a: 18000000, b: 9700000},
+        {y: '2015', a: 10000000, b: 9000000},
+        {y: '2016', a: 7500000, b: 6500000},
+        {y: '2017', a: 5000000, b: 4000000},
+        {y: '2018', a: 7500000, b: 6500000},
+        {y: '2019', a: 5000000, b: 4000000},
+        {y: '2020', a: 7500000, b: 6500000},
+        {y: '2021', a: 18000000, b: 9700000},
+      ],
+      barColors: ['#ff9900', '#8c8c8c'],
+      xkey: 'y',
+      ykeys: ['a', 'b'],
+      labels: ['IN', 'OUT'],
+      hideHover: 'auto'
+    });    
   });
 </script>
 </body>
