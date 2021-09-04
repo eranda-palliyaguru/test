@@ -104,7 +104,7 @@ include_once("sidebar.php");
                     <!-- LINE CHART -->
                     <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Line Chart</h3>
+              <h3 class="box-title">Sales Value Chart</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -433,20 +433,20 @@ include_once("sidebar.php");
       element: 'line-chart',
       resize: true,
       data: [
-        {y: '2011 Q1', item1: 2666},
-        {y: '2011 Q2', item1: 2778},
-        {y: '2011 Q3', item1: 4912},
-        {y: '2011 Q4', item1: 3767},
-        {y: '2012 Q1', item1: 6810},
-        {y: '2012 Q2', item1: 5670},
-        {y: '2012 Q3', item1: 4820},
-        {y: '2012 Q4', item1: 15073},
-        {y: '2013 Q1', item1: 10687},
-        {y: '2013 Q2', item1: 8432}
+        {y: '2019 Q1', item1: 26006060},
+        {y: '2019 Q2', item1: 27007080},
+        {y: '2019 Q3', item1: 49001020},
+        {y: '2019 Q4', item1: 37006070},
+        {y: '2020 Q1', item1: 68001000},
+        {y: '2020 Q2', item1: 56007000},
+        {y: '2020 Q3', item1: 48002000},
+        {y: '2020 Q4', item1: 150007030},
+        {y: '2021 Q1', item1: 106008070},
+        {y: '2021 Q2', item1: 84003020}
       ],
       xkey: 'y',
       ykeys: ['item1'],
-      labels: ['Item 1'],
+      labels: ['Value'],
       lineColors: ['#3c8dbc'],
       hideHover: 'auto'
     });
@@ -457,18 +457,18 @@ include_once("sidebar.php");
       element: 'bar-chart',
       resize: true,
       data: [
-        {y: '2006', a: 100, b: 90},
-        {y: '2007', a: 75, b: 65},
-        {y: '2008', a: 50, b: 40},
-        {y: '2009', a: 75, b: 65},
-        {y: '2010', a: 50, b: 40},
-        {y: '2011', a: 75, b: 65},
-        {y: '2012', a: 100, b: 90}
+        {y: '2015', a: 10000000, b: 9000000},
+        {y: '2016', a: 7500000, b: 6500000},
+        {y: '2017', a: 5000000, b: 4000000},
+        {y: '2018', a: 7500000, b: 6500000},
+        {y: '2019', a: 5000000, b: 4000000},
+        {y: '2020', a: 7500000, b: 6500000},
+        {y: '2021', a: 18000000, b: 9700000}
       ],
       barColors: ['#00a65a', '#f56954'],
       xkey: 'y',
       ykeys: ['a', 'b'],
-      labels: ['CPU', 'DISK'],
+      labels: ['IN', 'OUT'],
       hideHover: 'auto'
     });
   });
