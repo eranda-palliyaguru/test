@@ -312,79 +312,10 @@ include_once("sidebar.php");
 	 }
 	 ?>
 
-	<div class="col-lg-6 col-xs-6">
-		<div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Cash</h3>
-            </div>
-            <!-- /.box-header -->
 
-            <div class="box-body">
-
-	           	<table class="table table-bordered table-striped" >
-                <thead>
-                <tr>
-					<th>ID</th>
-					<th>Loading Date</th>
-					<th>Lorry No.</th>
-				<th>Amount (Rs.)</th>
-
-
-                </tr>
-                </thead>
-<tbody>
-
-<?php $date=date("Y-m-d");
-	$result = $db->prepare("SELECT * FROM loading WHERE  bank_action='0' AND cash_total > '0' AND action='unload'");
-					$result->bindParam(':userid', $date);
-                $result->execute();
-                for($i=0; $row = $result->fetch(); $i++){
-
-
-	?>			<tr class="record">
-               <td><?php echo $row['transaction_id'];   ?> </td>
-	       <td><?php echo $row['date'];   ?> </td>
-				<td><?php echo $row['lorry_no'];   ?> </td>
-              <td>Rs.<?php echo $row['cash_total'];   ?></td>
-                </tr>
-				<?php } ?>
-				</tbody>
-              </table>
-	  </div></div></div>
-
-	<?php
-$resultz = $db->prepare("SELECT * FROM peti  ");
-$resultz->bindParam(':userid', $inva);
-$resultz->execute();
-for($i=0; $rowz = $resultz->fetch(); $i++){
-$ba=$rowz['amount'];
-}
- ?>
-
-
-
-
-
-
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3><?php echo $ba; ?></h3>
-
-              <p>Petty Cash BOX</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-group"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
         <!-- ./col -->
         </div>
-	<?php
 
- ?>
 
 
 
