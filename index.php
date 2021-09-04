@@ -106,9 +106,7 @@ include_once("sidebar.php");
 
 
 	 <?php     $r=$_SESSION['SESS_LAST_NAME'];
-$blabla=100;
-if($blabla=1){}
-else{
+
  ?>
 
 
@@ -385,7 +383,7 @@ $ba=$rowz['amount'];
         <!-- ./col -->
         </div>
 	<?php
-}
+
  ?>
 
 
