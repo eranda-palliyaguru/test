@@ -95,7 +95,6 @@ include_once("sidebar.php");
 
 
 
-
 			?>
 
     <div class="row">
@@ -106,7 +105,7 @@ include_once("sidebar.php");
 
             <div class="info-box-content">
               <span class="info-box-text">Inventory</span>
-              <span class="info-box-number">5,200</span>
+              <span class="info-box-number"><?php // echo $date; ?></span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 50%"></div>
@@ -205,7 +204,7 @@ include_once("sidebar.php");
           <!-- BAR CHART -->
           <div class="box box-solid ">
             <div class="box-header ">
-              <h3 class="box-title">Bar Chart</h3>
+              <h3 class="box-title">IN AND OUT Chart</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn  btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -225,13 +224,13 @@ include_once("sidebar.php");
 
 
                
-      </div>
+     
      
       <div class="col-md-12">
           <!-- BAR CHART -->
           <div class="box box-solid ">
             <div class="box-header ">
-              <h3 class="box-title">Bar Chart</h3>
+              <h3 class="box-title">14 Day Payment Chart</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn  btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -240,11 +239,13 @@ include_once("sidebar.php");
               </div>
             </div>
             <div class="box-body chart-responsive">
-              <div class="chart" id="bar-chart2" style="height: 200px;"></div>
+              <div class="chart" id="bar-chart2" ></div>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+
+        </div>
 
         </div>
 
@@ -541,7 +542,7 @@ include_once("sidebar.php");
         {y: '2018', a: 7500000, b: 6500000},
         {y: '2019', a: 5000000, b: 4000000},
         {y: '2020', a: 7500000, b: 6500000},
-        {y: '2021', a: 18000000, b: 9700000}
+        {y: '2021', a: 7500000, b: 9700000}
       ],
       barColors: ['#00a65a', '#f56954'],
       xkey: 'y',
@@ -556,25 +557,47 @@ include_once("sidebar.php");
       element: 'bar-chart2',
       resize: true,
       data: [
-        {y: '2015', a: 10000000, b: 9000000},
-        {y: '2016', a: 7500000, b: 6500000},
-        {y: '2017', a: 5000000, b: 4000000},
-        {y: '2018', a: 7500000, b: 6500000},
-        {y: '2019', a: 5000000, b: 4000000},
-        {y: '2020', a: 7500000, b: 6500000},
-        {y: '2021', a: 18000000, b: 9700000},
-        {y: '2015', a: 10000000, b: 9000000},
-        {y: '2016', a: 7500000, b: 6500000},
-        {y: '2017', a: 5000000, b: 4000000},
-        {y: '2018', a: 7500000, b: 6500000},
-        {y: '2019', a: 5000000, b: 4000000},
-        {y: '2020', a: 7500000, b: 6500000},
-        {y: '2021', a: 18000000, b: 9700000},
+<?php $x=0;
+while($x <= 14) {
+  $d=strtotime("-$x Day");
+$date=date("Y-m-d", $d);
+$cash=0; $chq=0;$credit=0;
+$result1 = $db->prepare("SELECT  amount FROM payment WHERE date='$date' AND action > '0' AND type='cash' ");
+$result1->bindParam(':userid', $date);
+        $result1->execute();
+        for($i=0; $row1 = $result1->fetch(); $i++){
+$cash+=$row1['amount'];
+        }
+        $result1 = $db->prepare("SELECT  amount FROM payment WHERE date='$date' AND action > '0' AND type='chq' ");
+        $result1->bindParam(':userid', $date);
+                $result1->execute();
+                for($i=0; $row1 = $result1->fetch(); $i++){
+        $chq+=$row1['amount'];
+                }
+
+                $result1 = $db->prepare("SELECT  amount FROM payment WHERE date='$date' AND action > '0' AND type='credit' ");
+        $result1->bindParam(':userid', $date);
+                $result1->execute();
+                for($i=0; $row1 = $result1->fetch(); $i++){
+        $credit+=$row1['amount'];
+                }
+
+        $split = explode("-", $date);
+        $y= $split[0];
+        $m= $split[1];
+        $d= $split[2];
+        $date=mktime(0,0,0,$m,$d,$y);
+        $date= date('M d',$date);
+                      
+  ?>
+        {x:'<?php echo $date;?>' , a: <?php echo $cash;?> , b: <?php echo $chq;?> , c: <?php echo $credit;?>},
+  <?php  $x++; } ?>
+
       ],
-      barColors: ['#ff9900', '#8c8c8c'],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['IN', 'OUT'],
+      barColors: ['#ff9900', '#8c8c8c', '#cc0000'],
+      xkey: 'x',
+      ykeys: ['a', 'b', 'c'],
+      labels: ['CASH', 'CHQ', 'CREDIT'],
       hideHover: 'auto'
     });    
   });
