@@ -102,7 +102,6 @@ if($collection_id=='0'){
 
     $invo_no=$row2['invoice_no'];
     $loading=$row2['loading_id'];
-    
     $rep_type=$row2['type'];
     $rep_date=$row2['date'];
     $rep_cus=$row2['customer_id'];
