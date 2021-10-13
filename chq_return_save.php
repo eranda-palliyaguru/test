@@ -85,7 +85,7 @@ $amount_tot=$amount+$charges;
 // checking bulck payment or nomal payment
 if ($sales_id== 0) {
 if($collection_id=='0'){
-  $resultz = $db->prepare("SELECT * FROM credit_payment WHERE pay_id='$pay_id' and action='0'");
+  $resultz = $db->prepare("SELECT * FROM credit_payment WHERE pay_id='$pay_id' and action='0'");// 
 }else{
   $resultz = $db->prepare("SELECT * FROM credit_payment WHERE collection_id='$collection_id' and action='0'");}
 
@@ -93,6 +93,7 @@ if($collection_id=='0'){
   $resultz->execute();
   for($i=0; $row = $resultz->fetch(); $i++){
   $credit_tr_id=$row['tr_id'];
+  $rep_amount=$row['pay_amount'];
 
   $sales_result = $db->prepare("SELECT * FROM payment WHERE transaction_id='$credit_tr_id' ");
   $sales_result->bindParam(':userid', $inva);
@@ -101,7 +102,7 @@ if($collection_id=='0'){
 
     $invo_no=$row2['invoice_no'];
     $loading=$row2['loading_id'];
-    $rep_amount=$row2['pay_amount'];
+    
     $rep_type=$row2['type'];
     $rep_date=$row2['date'];
     $rep_cus=$row2['customer_id'];
