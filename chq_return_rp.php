@@ -108,7 +108,7 @@ include_once("sidebar.php");
                 $result = $db->prepare("SELECT * FROM bank WHERE  type='1' AND chq_action='0'  ");
 		$result->bindParam(':userid', $res);
 		$result->execute();
-		for($i=0; $row = $result->fetch(); $i++){
+		for($i=0; $row = $result->fetch(); $i++){ // testing
 
 			$d_date=$row['chq_date'];
 			$date=date('Y-m-d');
