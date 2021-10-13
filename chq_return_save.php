@@ -114,7 +114,7 @@ if($collection_id=='0'){
     $q = $db->prepare($sql);
     $q->execute(array($invo_no,$rep_amount,$rep_type,$rep_date,$rep_cus,$rep_credit,$rep_sales,"2",$loading,"CHQ RETURN"));
 
-
+ 
 }
 }
 
